@@ -22,6 +22,7 @@ function generateMessages(){
 
 bot.on("message", message => {
     if(!message.channel.id === "493532426530848778") return;
+    if(message.author.bot) return;
     message.delete();
     if (message.author.id === "346409345069613056" && message.content.toLowerCase() == setupCMD){
         var toSend = generateMessages();
