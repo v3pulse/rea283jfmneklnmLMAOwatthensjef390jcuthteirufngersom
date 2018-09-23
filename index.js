@@ -66,7 +66,7 @@ bot.on('raw', event => {
                     memberObj.addRole(roleObj);
                    memberObj.removeRole(msg.guild.roles.find(r => r.name === "Starter"));
                    memberObj.addRole(msg.guild.roles.find(r => r.name === "Ranking"));
-                    	msg.guild.channels.find('name', 'rank-me').sendMessage(user.toString() + " Set rank!").then(msg => msg.delete(500));
+                    	msg.guild.channels.find('name', 'rank-me').sendMessage(memberObj.toString() + " Set rank!").then(msg => msg.delete(500));
 
                     
 
