@@ -40,10 +40,11 @@ bot.on('raw', event => {
     
     if (event.t === 'MESSAGE_REACTION_ADD' || event.t == "MESSAGE_REACTION_REMOVE"){
         
-        let rankme = msg.guild.channels.find(c => c.name === "rank-me");
         let channel = bot.channels.get(event.d.channel_id);
         let message = channel.fetchMessage(event.d.message_id).then(msg=> {
         let user = msg.guild.members.get(event.d.user_id);
+                 let rankme = msg.guild.channels.find(c => c.name === "rank-me");
+
      
         if (msg.author.id == bot.user.id && msg.content != initialMessage){
        
