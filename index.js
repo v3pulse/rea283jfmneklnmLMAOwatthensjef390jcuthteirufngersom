@@ -44,6 +44,9 @@ bot.on('raw', event => {
         let message = channel.fetchMessage(event.d.message_id).then(msg=> {
         let user = msg.guild.members.get(event.d.user_id);
                  let rankme = msg.guild.channels.find(c => c.name === "rank-me");
+        let role1 = msg.guild.roles.find(r => r.name === "NA-E");
+        let role2 = msg.guild.roles.find(r => r.name === "NA-W");
+        let role3 = msg.guild.roles.find(r => r.name === "EU");
 
      
         if (msg.author.id == bot.user.id && msg.content != initialMessage){
@@ -51,9 +54,13 @@ bot.on('raw', event => {
             var re = `\\*\\*"(.+)?(?="\\*\\*)`;
             var role = msg.content.match(re)[1];
         
+            
             if (user.id != bot.user.id){
                 var roleObj = msg.guild.roles.find('name', role);
                 var memberObj = msg.guild.members.get(user.id);
+                if(memberObj.roles.has(role1)) return;
+               if(memberObj.roles.has(role2)) return;
+                if(memberObj.roles.has(role3)) return;
                 
                 if (event.t === "MESSAGE_REACTION_ADD"){
                     memberObj.addRole(roleObj)
