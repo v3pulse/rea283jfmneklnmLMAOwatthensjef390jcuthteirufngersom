@@ -58,9 +58,7 @@ bot.on('raw', event => {
             if (user.id != bot.user.id){
                 var roleObj = msg.guild.roles.find('name', role);
                 var memberObj = msg.guild.members.get(user.id);
-                if(memberObj.roles.has(role1)) return;
-               if(memberObj.roles.has(role2)) return;
-                if(memberObj.roles.has(role3)) return;
+
                 
                 if (event.t === "MESSAGE_REACTION_ADD"){
                     memberObj.addRole(roleObj)
