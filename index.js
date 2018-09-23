@@ -40,6 +40,7 @@ bot.on('raw', event => {
     
     if (event.t === 'MESSAGE_REACTION_ADD' || event.t == "MESSAGE_REACTION_REMOVE"){
         
+        let rankme = msg.guild.channels.find(c => c.name === "rank-me");
         let channel = bot.channels.get(event.d.channel_id);
         let message = channel.fetchMessage(event.d.message_id).then(msg=> {
         let user = msg.guild.members.get(event.d.user_id);
@@ -55,6 +56,7 @@ bot.on('raw', event => {
                 
                 if (event.t === "MESSAGE_REACTION_ADD"){
                     memberObj.addRole(roleObj)
+                    rankme.send("Welcome", + user.toString()).then(msg => msg.delete(500));
                 } else {
                     memberObj.removeRole(roleObj);
                 }
