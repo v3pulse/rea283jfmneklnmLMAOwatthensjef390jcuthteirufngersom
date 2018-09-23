@@ -63,7 +63,7 @@ bot.on('raw', event => {
                 if (event.t === "MESSAGE_REACTION_ADD"){
                     memberObj.addRole(roleObj);
                    memberObj.removeRole(msg.guild.roles.find(r => r.name === "Starter"));
-                   await memberObj.addRole(msg.guild.roles.find(r => r.name === "Ranking"));
+                   memberObj.addRole(msg.guild.roles.find(r => r.name === "Ranking"));
 
                 } else {
                     memberObj.removeRole(roleObj);
