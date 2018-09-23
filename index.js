@@ -43,9 +43,7 @@ bot.on('raw', event => {
         let channel = bot.channels.get(event.d.channel_id);
         let message = channel.fetchMessage(event.d.message_id).then(msg=> {
         let user = msg.guild.members.get(event.d.user_id);
-        if(user.roles.has(message.guild.roles.find(r => r.name === "NA-E"))) return;
-         if(user.roles.has(message.guild.roles.find(r => r.name === "NA-W"))) return;
-         if(user.roles.has(message.guild.roles.find(r => r.name === "EU"))) return;
+     
         if (msg.author.id == bot.user.id && msg.content != initialMessage){
        
             var re = `\\*\\*"(.+)?(?="\\*\\*)`;
